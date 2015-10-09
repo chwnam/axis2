@@ -14,7 +14,7 @@ namespace wskl_host\utils;
  * @param string           $message
  * @param bool|FALSE       $return
  *
- * @return string
+ * @return void|string
  */
 function display_admin_notice( $class, $message, $return = FALSE ) {
 
