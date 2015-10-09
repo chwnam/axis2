@@ -9,6 +9,13 @@ namespace wskl_host\utils;
  *
  * @return string|void
  */
+/**
+ * @param string           $class
+ * @param string           $message
+ * @param bool|FALSE       $return
+ *
+ * @return string
+ */
 function display_admin_notice( $class, $message, $return = FALSE ) {
 
 	$html = sprintf( '<div class="%s"><p>%s</p></div>', $class, $message );
@@ -20,4 +27,5 @@ function display_admin_notice( $class, $message, $return = FALSE ) {
 	echo $html;
 
 	/** @noinspection PhpInconsistentReturnPointsInspection */
+	return;
 }
