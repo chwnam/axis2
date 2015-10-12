@@ -1,6 +1,6 @@
 <?php
 
-namespace wskl_host\utils;
+namespace wskl_host\util;
 
 /**
  * @param string     $class
