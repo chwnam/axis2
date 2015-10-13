@@ -1,6 +1,6 @@
 <?php
 
-namespace wskl_host_lib;
+namespace axis2;
 
 /**
  * Class Autoload

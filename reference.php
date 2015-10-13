@@ -1,5 +1,5 @@
 <?php
-namespace wskl_host_lib;
+namespace axis2;
 
 function slug_to_class_name( $slug, $postfix ) {
 

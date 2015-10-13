@@ -1,12 +1,12 @@
 <?php
 
-namespace wskl_host_lib;
+namespace axis2;
 
 
 class Base_Control {
 
 	/**
-	 * @var \wskl_host_lib\Bootstrap
+	 * @var \axis2\Bootstrap
 	 */
 	private $bootstrap;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace wskl_host_lib;
+namespace axis2;
 
 require_once( 'class-view-block.php' );
 
@@ -8,7 +8,7 @@ require_once( 'class-view-block.php' );
 class Base_View {
 
 	/**
-	 * @var \wskl_host_lib\Bootstrap
+	 * @var \axis2\Bootstrap
 	 */
 	private $bootstrap;
 

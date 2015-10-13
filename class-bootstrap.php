@@ -1,6 +1,6 @@
 <?php
 
-namespace wskl_host_lib;
+namespace axis2;
 
 require_once( 'class-autoload.php' );
 require_once( 'class-base-control.php' );
@@ -34,7 +34,7 @@ class Bootstrap {
 	private $dispatches;            // 인스턴스화 된 filter object array
 
 	/**
-	 * @var \wskl_host_lib\Autoload
+	 * @var \axis2\Autoload
 	 */
 	private $auto_loader;
 
@@ -42,7 +42,7 @@ class Bootstrap {
 	static private $dispatch_postfix = 'dispatch';
 
 	/**
-	 * @var \wskl_host_lib\Base_view
+	 * @var \axis2\Base_view
 	 */
 	static private $view             = NULL;
 
@@ -138,7 +138,7 @@ class Bootstrap {
 	 *
 	 * @param array $dispatch_catalog 디스패치 카탈로그입니다.
 	 *
-	 * @see \wskl_host_lib\Bootstrap::lookup_dispatch()
+	 * @see \axis2\Bootstrap::lookup_dispatch()
 	 *
 	 * @return array 필터 인스턴스입니다. 각 내용은 슬러그로 색인되어 있습니다.
 	 */
@@ -165,7 +165,7 @@ class Bootstrap {
 			/** @noinspection PhpIncludeInspection */
 			require_once( $path );
 
-			/** @var \wskl_host_lib\Base_Dispatch $instance */
+			/** @var \axis2\Base_Dispatch $instance */
 			$instance               = new $fqn( $this, $app_name );
 			$filters[ $item->slug ] = $instance;
 			$instance->init_dispatch();
