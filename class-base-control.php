@@ -1,15 +1,12 @@
 <?php
 
-namespace wskl_host\controls;
-
-use wskl_host\bootstrap\Bootstrap;
-use wskl_host\references;
+namespace wskl_host_lib;
 
 
 class Base_Control {
 
 	/**
-	 * @var Bootstrap
+	 * @var \wskl_host_lib\Bootstrap
 	 */
 	private $bootstrap;
 
@@ -68,7 +65,7 @@ class Base_Control {
 		$bootstrap = $this->get_bootstrap();
 		$app_namespace = $bootstrap->get_app_namespace();
 
-		return references\compose_fqn( $app_namespace, $app_name, 'model', $model_slug );
+		return compose_fqn( $app_namespace, $app_name, 'model', $model_slug );
 	}
 
 	private function compose_view_fqn( $app_name, $view_slug ) {
@@ -76,6 +73,6 @@ class Base_Control {
 		$bootstrap = $this->get_bootstrap();
 		$app_namespace = $bootstrap->get_app_namespace();
 
-		return references\compose_fqn( $app_namespace, $app_name, 'view', $view_slug );
+		return compose_fqn( $app_namespace, $app_name, 'view', $view_slug );
 	}
 }

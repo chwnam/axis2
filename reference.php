@@ -1,5 +1,5 @@
 <?php
-namespace wskl_host\references;
+namespace wskl_host_lib;
 
 function slug_to_class_name( $slug, $postfix ) {
 

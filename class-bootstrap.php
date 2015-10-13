@@ -1,13 +1,13 @@
 <?php
 
-namespace wskl_host\bootstrap;
+namespace wskl_host_lib;
 
 require_once( 'class-autoload.php' );
+require_once( 'class-base-control.php' );
 require_once( 'class-base-dispatch.php' );
+require_once( 'class-base-view.php' );
 require_once( 'reference.php' );
 require_once( 'util.php' );
-
-use wskl_host\Autoload;
 
 
 class Bootstrap {
@@ -34,12 +34,17 @@ class Bootstrap {
 	private $dispatches;            // 인스턴스화 된 filter object array
 
 	/**
-	 * @var \wskl_host\Autoload
+	 * @var \wskl_host_lib\Autoload
 	 */
 	private $auto_loader;
 
 	static private $app_root_name    = 'app';
 	static private $dispatch_postfix = 'dispatch';
+
+	/**
+	 * @var \wskl_host_lib\Base_view
+	 */
+	static private $view             = NULL;
 
 	public function get_app_namespace() {
 
@@ -49,6 +54,18 @@ class Bootstrap {
 	public function get_app_path() {
 
 		return $this->app_path;
+	}
+
+	public function get_plugin_dir() {
+
+		return $this->plugin_dir;
+	}
+
+	/**
+	 * @return Base_view
+	 */
+	public static function get_view() {
+		return static::$view;
 	}
 
 	public function startup( $plugin_main_file, $app_namespace, array $allowed_app_names ) {
@@ -64,6 +81,10 @@ class Bootstrap {
 
 		$this->dispatch_catalog = static::lookup_dispatch( $this->app_path, $allowed_app_names );
 		$this->dispatches       = $this->init_dispatches( $this->dispatch_catalog );
+
+		if( !static::$view ) {
+			static::$view = new Base_View( $this );
+		}
 	}
 
 	/**
@@ -117,7 +138,7 @@ class Bootstrap {
 	 *
 	 * @param array $dispatch_catalog 디스패치 카탈로그입니다.
 	 *
-	 * @see \wskl_host\bootstrap\Bootstrap::lookup_dispatch()
+	 * @see \wskl_host_lib\Bootstrap::lookup_dispatch()
 	 *
 	 * @return array 필터 인스턴스입니다. 각 내용은 슬러그로 색인되어 있습니다.
 	 */
@@ -144,7 +165,7 @@ class Bootstrap {
 			/** @noinspection PhpIncludeInspection */
 			require_once( $path );
 
-			/** @var \wskl_host\libs\Base_Dispatch $instance */
+			/** @var \wskl_host_lib\Base_Dispatch $instance */
 			$instance               = new $fqn( $this, $app_name );
 			$filters[ $item->slug ] = $instance;
 			$instance->init_dispatch();

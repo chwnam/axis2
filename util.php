@@ -1,14 +1,7 @@
 <?php
 
-namespace wskl_host\util;
+namespace wskl_host_lib;
 
-/**
- * @param string     $class
- * @param string     $message
- * @param bool|FALSE $return
- *
- * @return string|void
- */
 /**
  * @param string           $class
  * @param string           $message
@@ -28,4 +21,11 @@ function display_admin_notice( $class, $message, $return = FALSE ) {
 
 	/** @noinspection PhpInconsistentReturnPointsInspection */
 	return;
+}
+
+
+function render( $template, array $context = array() ) {
+
+	$view = Bootstrap::get_view();
+	return $view->render( $template, $context );
 }

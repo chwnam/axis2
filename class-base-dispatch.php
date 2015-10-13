@@ -1,9 +1,6 @@
 <?php
 
-namespace wskl_host\libs;
-
-use wskl_host\bootstrap\Bootstrap;
-use wskl_host\references;
+namespace wskl_host_lib;
 
 
 abstract class Base_Dispatch {
@@ -13,7 +10,7 @@ abstract class Base_Dispatch {
 	 */
 	private $app_name;
 
-	/** @var  \wskl_host\bootstrap\Bootstrap */
+	/** @var  \wskl_host_lib\Bootstrap */
 	private $bootstrap;
 
 	public function __construct( Bootstrap $bootstrap, $app_name ) {
@@ -24,7 +21,7 @@ abstract class Base_Dispatch {
 	abstract public function init_dispatch();
 
 	/**
-	 * @param $bootstrap \wskl_host\bootstrap\Bootstrap
+	 * @param $bootstrap \wskl_host_lib\Bootstrap
 	 */
 	public function set_bootstrap( Bootstrap $bootstrap ) {
 
@@ -32,7 +29,7 @@ abstract class Base_Dispatch {
 	}
 
 	/**
-	 * @return \wskl_host\bootstrap\Bootstrap
+	 * @return \wskl_host_lib\Bootstrap
 	 */
 	public function get_bootstrap() {
 
@@ -68,6 +65,6 @@ abstract class Base_Dispatch {
 		$bootstrap = $this->get_bootstrap();
 		$app_namespace = $bootstrap->get_app_namespace();
 
-		return references\compose_fqn( $app_namespace, $app_name, 'control', $slug );
+		return compose_fqn( $app_namespace, $app_name, 'control', $slug );
 	}
 }

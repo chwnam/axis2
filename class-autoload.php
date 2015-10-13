@@ -1,6 +1,6 @@
 <?php
 
-namespace wskl_host;
+namespace wskl_host_lib;
 
 /**
  * Class Autoload
