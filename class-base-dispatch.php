@@ -49,7 +49,13 @@ abstract class Base_Dispatch {
 		}
 
 		$fqn      = $this->compose_control_fqn( $app_name, $control_slug );
-		$instance = new $fqn( $this->get_bootstrap(), $app_name, $control_slug );
+		$instance = new $fqn(
+			array(
+				'bootstrap' => $this->get_bootstrap(),
+				'app-name'  => $app_name,
+				'slug'      => $control_slug
+			)
+		);
 
 		return $instance;
 	}
