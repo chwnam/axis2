@@ -5,6 +5,7 @@ namespace axis2;
 require_once( 'class-autoload.php' );
 require_once( 'class-base-control.php' );
 require_once( 'class-base-dispatch.php' );
+require_once( 'class-base-model.php' );
 require_once( 'class-base-view.php' );
 require_once( 'reference.php' );
 require_once( 'util.php' );
