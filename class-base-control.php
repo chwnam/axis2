@@ -20,20 +20,16 @@ class Base_Control {
 	 */
 	private $slug;
 
-	public function __construct( Bootstrap $bootstrap, $app_name, $slug ) {
+	public function __construct( array $args = array() ) {
 
-		$this->bootstrap = $bootstrap;
-		$this->app_name  = $app_name;
-		$this->slug      = $slug;
+		$this->bootstrap = pop_or_throw( $args, 'bootstrap' );
+		$this->app_name  = pop_or_throw( $args, 'app-name' );
+		$this->slug      = pop_or_throw( $args, 'slug' );
 	}
 
 	public function get_bootstrap() {
 
 		return $this->bootstrap;
-	}
-
-	public function run() {
-		wp_die('ok');
 	}
 
 	protected function model( $model_slug, $app_name = '' ) {
