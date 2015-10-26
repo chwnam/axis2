@@ -23,6 +23,30 @@ function display_admin_notice( $class, $message, $return = FALSE ) {
 	return;
 }
 
+function pop_args( array &$args, $keyword, $default = NULL ) {
+
+	if( !isset( $args[ $keyword ] ) ) {
+		return $default;
+	}
+
+	$out = $args[ $keyword ];
+	unset( $args[ $keyword ] );
+
+	return $out;
+}
+
+function pop_or_throw( array &$args, $keyword ) {
+
+	if( !isset( $args[ $keyword ] ) ) {
+		throw new \LogicException( "the array requires a key '$keyword'" );
+	}
+
+	$out = $args[ $keyword ];
+	unset( $args[ $keyword ] );
+
+	return $out;
+}
+
 
 function render( $template, array $context = array() ) {
 
