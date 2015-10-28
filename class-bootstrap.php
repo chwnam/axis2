@@ -2,6 +2,7 @@
 
 namespace axis2;
 
+require_once( 'class-admin-notice.php' );
 require_once( 'class-autoload.php' );
 require_once( 'class-base-control.php' );
 require_once( 'class-base-dispatch.php' );
@@ -23,7 +24,9 @@ class Bootstrap {
 	 */
 	private $plugin_dir;
 
-	/** @var string apps' path */
+	/**
+	 * @var string apps' path
+	 */
 	private $app_path;
 
 	/**
@@ -33,6 +36,11 @@ class Bootstrap {
 
 	private $dispatch_catalog;      // 필터 정보. 각 개체마다 stdClass. app_name, filter_slug, path 요소를 가지고 있음.
 	private $dispatches;            // 인스턴스화 된 filter object array
+
+	/**
+	 * @var Admin_Notice
+	 */
+	private $admin_notice;
 
 	/**
 	 * @var \axis2\Autoload
@@ -85,6 +93,10 @@ class Bootstrap {
 
 		if( !static::$view ) {
 			static::$view = new Base_View( $this );
+		}
+
+		if( !$this->admin_notice ) {
+			$this->admin_notice = new Admin_Notice();
 		}
 	}
 
@@ -173,5 +185,12 @@ class Bootstrap {
 		}
 
 		return $filters;
+	}
+
+	/**
+	 * @return Admin_Notice
+	 */
+	public function get_admin_notice() {
+		return $this->admin_notice;
 	}
 }

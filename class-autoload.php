@@ -66,7 +66,6 @@ class Autoload {
 
 		if( $fqn_len && $fqn[0] == '\\' ) {
 			$fqn = substr( $fqn, 1 );
-			--$fqn_len;
 		}
 
 		$base_pos = strpos( $fqn, $this->base_namespace );
