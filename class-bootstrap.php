@@ -2,7 +2,6 @@
 
 namespace axis2;
 
-require_once( 'class-admin-notice.php' );
 require_once( 'class-autoload.php' );
 require_once( 'class-base-control.php' );
 require_once( 'class-base-dispatch.php' );
