@@ -38,11 +38,6 @@ class Bootstrap {
 	private $dispatches;            // 인스턴스화 된 filter object array
 
 	/**
-	 * @var Admin_Notice
-	 */
-	private $admin_notice;
-
-	/**
 	 * @var \axis2\Autoload
 	 */
 	private $auto_loader;
@@ -93,10 +88,6 @@ class Bootstrap {
 
 		if( !static::$view ) {
 			static::$view = new Base_View( $this );
-		}
-
-		if( !$this->admin_notice ) {
-			$this->admin_notice = new Admin_Notice();
 		}
 	}
 
@@ -185,12 +176,5 @@ class Bootstrap {
 		}
 
 		return $filters;
-	}
-
-	/**
-	 * @return Admin_Notice
-	 */
-	public function get_admin_notice() {
-		return $this->admin_notice;
 	}
 }
