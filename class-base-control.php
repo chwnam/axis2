@@ -71,10 +71,4 @@ class Base_Control {
 
 		return compose_fqn( $app_namespace, $app_name, 'view', $view_slug );
 	}
-
-	public function get_admin_notice() {
-
-		$bootstrap = $this->get_bootstrap();
-		return $bootstrap->get_admin_notice();
-	}
 }
