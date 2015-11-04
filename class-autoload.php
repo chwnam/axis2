@@ -1,10 +1,10 @@
 <?php
 
-namespace axis2;
+namespace casper_axis2;
 
 /**
  * Class Autoload
- * @package wskl_host
+ * @package casper_axis2
  */
 class Autoload {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace axis2;
+namespace casper_axis2;
 
 require_once( 'class-autoload.php' );
 require_once( 'class-base-control.php' );
@@ -37,7 +37,7 @@ class Bootstrap {
 	private $dispatches;            // 인스턴스화 된 filter object array
 
 	/**
-	 * @var \axis2\Autoload
+	 * @var \casper_axis2\Autoload
 	 */
 	private $auto_loader;
 
@@ -45,7 +45,7 @@ class Bootstrap {
 	static private $dispatch_postfix = 'dispatch';
 
 	/**
-	 * @var \axis2\Base_view
+	 * @var \casper_axis2\Base_view
 	 */
 	static private $view             = NULL;
 
@@ -168,7 +168,7 @@ class Bootstrap {
 			/** @noinspection PhpIncludeInspection */
 			require_once( $path );
 
-			/** @var \axis2\Base_Dispatch $instance */
+			/** @var \casper_axis2\Base_Dispatch $instance */
 			$instance               = new $fqn( $this, $app_name );
 			$filters[ $item->slug ] = $instance;
 			$instance->init_dispatch();

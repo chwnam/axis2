@@ -1,6 +1,6 @@
 <?php
 
-namespace axis2;
+namespace casper_axis2;
 
 
 class Base_Model {

@@ -1,5 +1,5 @@
 <?php
-namespace axis2;
+namespace casper_axis2;
 
 function slug_to_class_name( $slug, $postfix ) {
 

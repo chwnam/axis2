@@ -1,6 +1,6 @@
 <?php
 
-namespace axis2;
+namespace casper_axis2;
 
 
 abstract class Base_Dispatch {
@@ -10,7 +10,7 @@ abstract class Base_Dispatch {
 	 */
 	private $app_name;
 
-	/** @var  \axis2\Bootstrap */
+	/** @var  \casper_axis2\Bootstrap */
 	private $bootstrap;
 
 	public function __construct( Bootstrap $bootstrap, $app_name ) {
@@ -21,7 +21,7 @@ abstract class Base_Dispatch {
 	abstract public function init_dispatch();
 
 	/**
-	 * @param $bootstrap \axis2\Bootstrap
+	 * @param $bootstrap \casper_axis2\Bootstrap
 	 */
 	public function set_bootstrap( Bootstrap $bootstrap ) {
 
@@ -29,7 +29,7 @@ abstract class Base_Dispatch {
 	}
 
 	/**
-	 * @return \axis2\Bootstrap
+	 * @return \casper_axis2\Bootstrap
 	 */
 	public function get_bootstrap() {
 
