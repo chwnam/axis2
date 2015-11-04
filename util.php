@@ -1,6 +1,6 @@
 <?php
 
-namespace casper_axis2;
+namespace axis2;
 
 /**
  * @param string           $class

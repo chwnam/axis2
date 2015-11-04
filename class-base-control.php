@@ -1,12 +1,12 @@
 <?php
 
-namespace casper_axis2;
+namespace axis2;
 
 
 class Base_Control {
 
 	/**
-	 * @var \casper_axis2\Bootstrap
+	 * @var \axis2\Bootstrap
 	 */
 	private $bootstrap;
 

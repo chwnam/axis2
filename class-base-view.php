@@ -1,6 +1,6 @@
 <?php
 
-namespace casper_axis2;
+namespace axis2;
 
 require_once( 'class-view-block.php' );
 
@@ -8,7 +8,7 @@ require_once( 'class-view-block.php' );
 class Base_View {
 
 	/**
-	 * @var \casper_axis2\Bootstrap
+	 * @var \axis2\Bootstrap
 	 */
 	private $bootstrap;
 
