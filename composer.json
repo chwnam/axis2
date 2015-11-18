@@ -1,0 +1,20 @@
+{
+  "name": "changwoo/axis2",
+  "description": "Axis 2 for WordPress",
+  "keywords": ["wordpress", "MVC"],
+  "homepage": "https://github.com/chwnam/axis2",
+  "require": {
+  },
+  "license": "",
+  "authors": [
+    {
+      "name": "Changwoo Nam",
+      "email": "cs.chwnam@gmail.com"
+    }
+  ],
+  "autoload" : {
+    "psr-4" : {
+      "axis2\\": ""
+    }
+  }
+}
