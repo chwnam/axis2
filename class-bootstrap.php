@@ -71,10 +71,10 @@ class Bootstrap {
 		return static::$view;
 	}
 
-	public function startup( $plugin_main_file, $app_namespace, array $allowed_app_names ) {
+	public function startup( $plugin_main_file, $root_namespace, array $allowed_app_names ) {
 
 		$this->plugin_main_file = $plugin_main_file;
-		$this->app_namespace    = $app_namespace;
+		$this->app_namespace    = $root_namespace . '\\' . static::$app_root_name;;
 		$this->plugin_dir       = dirname( $this->plugin_main_file );
 		$app_root_name          = static::$app_root_name;
 		$this->app_path         = "{$this->plugin_dir}/{$app_root_name}";
