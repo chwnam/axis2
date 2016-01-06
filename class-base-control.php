@@ -34,14 +34,19 @@ class Base_Control {
 
 	protected function model( $model_slug, $app_name = '' ) {
 
+		$fqn = $this->model_class( $app_name, $model_slug );
+		$instance = new $fqn();
+
+		return $instance;
+	}
+
+	protected function model_class( $model_slug, $app_name = '' ) {
+
 		if( !$app_name ) {
 			$app_name = $this->app_name;
 		}
 
-		$fqn = $this->compose_model_fqn( $app_name, $model_slug );
-		$instance = new $fqn();
-
-		return $instance;
+		return $this->compose_model_fqn( $app_name, $model_slug );
 	}
 
 	protected function view( $view_slug, $app_name = '' ) {
