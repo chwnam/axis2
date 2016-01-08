@@ -35,7 +35,13 @@ class Base_Control {
 	protected function model( $model_slug, $app_name = '' ) {
 
 		$fqn = $this->model_class( $app_name, $model_slug );
-		$instance = new $fqn();
+		$instance = new $fqn(
+			array(
+				'bootstrap' => $this->get_bootstrap(),
+				'app-name'  => $app_name,
+				'slug'      => $model_slug
+			)
+		);
 
 		return $instance;
 	}
