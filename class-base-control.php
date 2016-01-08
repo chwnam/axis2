@@ -34,6 +34,10 @@ class Base_Control {
 
 	protected function model( $model_slug, $app_name = '' ) {
 
+		if( !$app_name ) {
+			$app_name = $this->app_name;
+		}
+
 		$fqn = $this->model_class( $model_slug, $app_name );
 		$instance = new $fqn(
 			array(
