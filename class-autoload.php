@@ -4,6 +4,7 @@ namespace axis2;
 
 /**
  * Class Autoload
+ *
  * @package casper_axis2
  */
 class Autoload {
@@ -18,75 +19,59 @@ class Autoload {
 	 */
 	private $base_namespace;
 
-	/**
-	 * @var array already loaded files.
-	 */
-	private $loaded = array();
-
 	public function __construct( $plugin_app_dir, $plugin_base_namespace ) {
 
-		$this->app_root       = $plugin_app_dir;
-		$this->base_namespace = $plugin_base_namespace;
+		$this->app_root           = $plugin_app_dir;
+		$this->base_namespace     = $plugin_base_namespace;
 	}
 
 	public function register_autoload() {
 
-		spl_autoload_register( array( &$this , 'autoload' ) );
+		spl_autoload_register( array( &$this, 'autoload' ) );
 	}
 
 	/**
-	 * @param $fqn string callback from spl_autoload_register()
+	 * @param $class string callback from spl_autoload_register()
 	 */
-	public function autoload( $fqn ) {
+	public function autoload( $class ) {
 
-		if( !isset( $this->loaded[ $fqn ] ) ) {
+		$class_path = $this->fqn_to_path( $class );
 
-			$class_path = $this->fqn_to_path( $fqn );
-
-			if( $class_path !== FALSE ) {
-
-					/** @noinspection PhpIncludeInspection */
-				require_once( $class_path );
-				$this->loaded[$fqn] = $class_path;
-			}
+		if ( $class_path !== FALSE ) {
+			/** @noinspection PhpIncludeInspection */
+			require_once( $class_path );
 		}
 	}
 
 	/**
-	 * Converts $fqn to physical file path.
-	 * $fqn is not ours, then returns FALSE.
+	 * Converts $class to physical file path.
+	 * if $class is not ours, then returns FALSE.
 	 *
-	 * @param $fqn string requested include (or require) file. Fully qualified name.
+	 * @param $class string requested include (or require) file. Fully qualified name.
 	 *
 	 * @return bool|string
 	 */
-	private function fqn_to_path( $fqn ) {
+	private function fqn_to_path( &$class ) {
 
-		$fqn_len = strlen( $fqn );
-
-		if( $fqn_len && $fqn[0] == '\\' ) {
-			$fqn = substr( $fqn, 1 );
-		}
-
-		$base_pos = strpos( $fqn, $this->base_namespace );
-		if( $base_pos === FALSE ) {
+		$base_pos = strpos( $class, $this->base_namespace );
+		if ( $base_pos !== 0 ) {
 			return FALSE;
 		}
 
 		$bns_len    = strlen( $this->base_namespace );
-		$stripped   = substr( $fqn, $bns_len + 1 );
+		$stripped   = substr( $class, $bns_len + 1 );
 		$components = explode( '\\', $stripped );
 
-		if( !count( $components ) == 3 ) {
+		if ( count( $components ) != 3 ) {
 			return FALSE;
 		}
 
-		$app_name   = $components[0];
-		$part       = $components[1];
-		$class_name = $components[2];
+		$app_name   = &$components[0];
+		$part       = &$components[1];
+		$class_name = &$components[2];
 
-		$app_path    = $this->app_name_to_app_dir( $app_name );
-		$class_file  = $this->class_name_to_class_file( $class_name );
+		$app_path   = $this->app_name_to_app_dir( $app_name );
+		$class_file = $this->class_name_to_class_file( $class_name );
 
 		$file_name = "{$this->app_root}/{$app_path}/{$part}/{$class_file}";
 
@@ -98,7 +83,7 @@ class Autoload {
 	 *
 	 * @return mixed
 	 */
-	private function app_name_to_app_dir( $app_name ) {
+	private function app_name_to_app_dir( &$app_name ) {
 
 		return str_replace( '_', '-', strtolower( $app_name ) );
 	}
@@ -108,10 +93,10 @@ class Autoload {
 	 *
 	 * @return string
 	 */
-	private function class_name_to_class_file( $class_name ) {
+	private function class_name_to_class_file( &$class_name ) {
 
 		$output = 'class';
-		foreach( explode( '_', str_replace( '_', '_', strtolower( $class_name ) ) ) as $tok ) {
+		foreach ( explode( '_', str_replace( '_', '_', strtolower( $class_name ) ) ) as $tok ) {
 			$output .= "-{$tok}";
 		}
 		$output .= '.php';
