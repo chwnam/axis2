@@ -5,7 +5,7 @@
   "homepage": "https://github.com/chwnam/axis2",
   "require": {
   },
-  "license": "",
+  "license": "BSD",
   "authors": [
     {
       "name": "Changwoo Nam",
