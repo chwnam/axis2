@@ -34,7 +34,7 @@ class Base_Model {
 
 	protected function model( $model_slug, $app_name = '' ) {
 
-		$fqn = $this->model_class( $app_name, $model_slug );
+		$fqn = $this->model_class( $model_slug, $app_name );
 		$instance = new $fqn(
 			array(
 				'bootstrap' => $this->get_bootstrap(),
