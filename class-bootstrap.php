@@ -41,7 +41,7 @@ class Bootstrap {
 	 */
 	private $auto_loader;
 
-	static private $app_root_name    = 'app';
+	static private $app_root_name    = 'apps';
 	static private $dispatch_postfix = 'dispatch';
 
 	/**
