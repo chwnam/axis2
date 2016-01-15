@@ -114,7 +114,7 @@ class Base_View {
 	protected function process_template( $template_name, array &$context ) {
 
 		$plugin_dir     = $this->bootstrap->get_plugin_dir();
-		$template_path  = "{$plugin_dir}/template/{$template_name}";
+		$template_path  = "{$plugin_dir}/templates/{$template_name}";
 
 		return static::get_buffer_content( $this, $template_path, $context );
 	}
